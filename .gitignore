@@ -29,3 +29,7 @@ build/
 
 ### VS Code ###
 .vscode/
+.mvn/
+src/main/resources/static/
+src/main/resources/templates/
+!/pom.xml
