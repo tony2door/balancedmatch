@@ -16,7 +16,6 @@ public class UsersService {
 
     @Transactional
     public List<Users> getAllUsers(){
-        List<Users> allUsers = usersRepository.findAll();
-        return allUsers;
+        return usersRepository.findAll();
     }
 }

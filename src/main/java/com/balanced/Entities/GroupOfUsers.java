@@ -1,7 +1,6 @@
 package com.balanced.Entities;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class GroupsOfUsers {
+public class GroupOfUsers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "group_id")
@@ -18,11 +17,11 @@ public class GroupsOfUsers {
     @Column(name = "group_name")
     private String groupName;
 
-    @OneToMany
-    List<Users>userList;
+    @OneToMany(mappedBy = "groupOfUsersForeign")
+    List<Users>listOfUsersInGroup;
 
-    @OneToMany
-    @JoinColumn(name = "team_id")
-    List<Teams> teamsForeign;
+
+
+
 }
 

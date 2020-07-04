@@ -1,7 +1,10 @@
 package com.balanced.Entities;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.catalina.User;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "teams_db")
@@ -15,6 +18,8 @@ public class Teams {
     @Column(name = "team_name")
     private String teamName;
 
-    @ManyToOne
-    GroupsOfUsers user;
+    @OneToMany(mappedBy = "teamsForeign")
+    List<Users> usersList;
+
+
 }
