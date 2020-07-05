@@ -12,7 +12,7 @@ public class BalancedmatchApplication {
 		ConfigurableApplicationContext context = SpringApplication.run(BalancedmatchApplication.class, args);
 
 		UsersService usersService = context.getBean("usersService", UsersService.class);
-		System.out.println(usersService.getAllUsers());
+		System.out.println(usersService.getUsersByGroupAndTeam("1decembrie","echipasmk"));
 
 	}
 }

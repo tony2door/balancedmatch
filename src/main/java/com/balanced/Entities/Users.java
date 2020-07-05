@@ -1,10 +1,15 @@
 package com.balanced.Entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "users_db")
+@Getter
+@Setter
 public class Users {
 
     @Id
