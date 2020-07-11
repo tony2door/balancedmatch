@@ -1,9 +1,7 @@
 package com.balanced.DTOs;
 
-import com.balanced.Entities.GroupOfUsers;
+import com.balanced.Entities.RoleEnum;
 import lombok.*;
-
-import javax.persistence.Column;
 
 @Getter
 @Setter
@@ -22,5 +20,8 @@ public class UsersDTO {
     private Integer playerDefence;
     private Integer playerMiddle;
     private Integer playerAttack;
+    private RoleEnum playerRole;
+    private String groupName;
+    private String teamName;
 
 }

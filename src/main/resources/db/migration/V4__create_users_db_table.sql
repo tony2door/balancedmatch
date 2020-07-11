@@ -12,7 +12,7 @@ create table users_db
     player_defence int,
     player_middle int,
     player_attack int,
-    player_role varchar(3),
+    player_role varchar(30),
     group_id int unsigned,
     foreign key (group_id) references groups_db(group_id),
     team_id int unsigned,

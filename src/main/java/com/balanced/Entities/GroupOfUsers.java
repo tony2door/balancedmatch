@@ -20,8 +20,12 @@ public class GroupOfUsers {
     @OneToMany(mappedBy = "groupOfUsersForeign")
     List<Users>listOfUsersInGroup;
 
-
-
-
+    @Override
+    public String toString() {
+        return "GroupOfUsers{" +
+                "groupId=" + groupId +
+                ", groupName='" + groupName + '\''+
+                '}';
+    }
 }
 

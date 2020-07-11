@@ -2,7 +2,6 @@ package com.balanced.Converters;
 
 import com.balanced.DTOs.UsersDTO;
 import com.balanced.Entities.Users;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,7 +20,9 @@ public class Converter {
         dto.setPlayerPass(entity.getPlayerPass());
         dto.setPlayerStamina(entity.getPlayerStamina());
         dto.setPlayerVision(entity.getPlayerVision());
+        dto.setPlayerRole(entity.getPlayerRole());
+        dto.setGroupName(entity.getGroupOfUsersForeign().getGroupName());
+        dto.setTeamName(entity.getTeamsForeign().getTeamName());
         return dto;
     }
-
 }

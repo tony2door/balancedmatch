@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "users_db")
@@ -39,6 +38,9 @@ public class Users {
     private Integer playerMiddle;
     @Column(name = "player_attack")
     private Integer playerAttack;
+    @Column(name = "player_role")
+    @Enumerated(EnumType.STRING)
+    private RoleEnum playerRole;
 
     @ManyToOne
     @JoinColumn(name = "group_id")

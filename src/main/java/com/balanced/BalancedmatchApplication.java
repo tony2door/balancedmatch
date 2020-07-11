@@ -1,5 +1,6 @@
 package com.balanced;
 
+import com.balanced.Services.GroupsService;
 import com.balanced.Services.UsersService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +13,7 @@ public class BalancedmatchApplication {
 		ConfigurableApplicationContext context = SpringApplication.run(BalancedmatchApplication.class, args);
 
 		UsersService usersService = context.getBean("usersService", UsersService.class);
-		System.out.println(usersService.getUsersByGroupAndTeam("1decembrie","echipasmk"));
+		System.out.println(usersService.getUsersByGroupAndTeam("1 DECEMBRIE","ECHIPA SMK"));
 
 	}
 }
