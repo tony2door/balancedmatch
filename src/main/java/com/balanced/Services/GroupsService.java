@@ -4,7 +4,6 @@ import com.balanced.Entities.GroupOfUsers;
 import com.balanced.repositories.GroupsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -17,6 +16,6 @@ public class GroupsService {
 
     @Transactional
     public List<GroupOfUsers> getAllGroups (){
-        return groupsRepository.getAllGroups();
+        return groupsRepository.findAll();
     }
 }

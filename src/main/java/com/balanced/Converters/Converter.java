@@ -23,6 +23,7 @@ public class Converter {
         dto.setPlayerRole(entity.getPlayerRole());
         dto.setGroupName(entity.getGroupOfUsersForeign().getGroupName());
         dto.setTeamName(entity.getTeamsForeign().getTeamName());
+        dto.setPlayerAverage(entity.getPlayerAverage());
         return dto;
     }
 }

@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "users_db")
@@ -41,6 +42,21 @@ public class Users {
     @Column(name = "player_role")
     @Enumerated(EnumType.STRING)
     private RoleEnum playerRole;
+    @Column(name = "player_average")
+    private Double playerAverage;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Users users = (Users) o;
+        return Objects.equals(userId, users.userId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId);
+    }
 
     @ManyToOne
     @JoinColumn(name = "group_id")
@@ -65,6 +81,8 @@ public class Users {
                 ", playerDefence=" + playerDefence +
                 ", playerMiddle=" + playerMiddle +
                 ", playerAttack=" + playerAttack +
+                ", playerRole=" + playerRole +
+                ", playerAverage=" + playerAverage +
                 ", groupOfUsersForeign=" + groupOfUsersForeign.getGroupName() +
                 ", teamsForeign=" + teamsForeign.getTeamName() +
                 '}';

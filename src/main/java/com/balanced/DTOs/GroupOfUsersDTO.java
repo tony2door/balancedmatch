@@ -8,6 +8,5 @@ import lombok.*;
 @AllArgsConstructor
 
 public class GroupOfUsersDTO {
-    Integer groupId;
     String groupName;
 }
