@@ -1,4 +1,5 @@
 package com.balanced.Services;
+
 import com.balanced.Converters.Converter;
 import com.balanced.DTOs.UsersDTO;
 import com.balanced.Entities.GroupOfUsers;
@@ -7,8 +8,10 @@ import com.balanced.Entities.Users;
 import com.balanced.repositories.GroupsRepository;
 import com.balanced.repositories.TeamsRepository;
 import com.balanced.repositories.UsersRepository;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import javax.transaction.Transactional;
 import java.util.*;
 import java.util.stream.IntStream;
@@ -71,25 +74,24 @@ public class UsersService {
     }
 
     @Transactional
-    public void calculateAverage(){
+    public void calculateAverage() {
         List<Users> usersList = usersRepository.findAll();
 
         for (int i = 0; i < usersList.size(); i++) {
             Users user = usersList.get(i);
-            IntStream playerSkills = IntStream.of(user.getPlayerStamina(),user.getPlayerPace(), user.getPlayerDribbling(), user.getPlayerVision(),
-                    user.getPlayerFirstTouch(), user.getPlayerPass(),user.getPlayerDefence(),user.getPlayerMiddle(),user.getPlayerAttack());
+            IntStream playerSkills = IntStream.of(user.getPlayerStamina(), user.getPlayerPace(), user.getPlayerDribbling(), user.getPlayerVision(),
+                    user.getPlayerFirstTouch(), user.getPlayerPass(), user.getPlayerDefence(), user.getPlayerMiddle(), user.getPlayerAttack());
             OptionalDouble res = playerSkills.average();
-            if(res.isPresent()){
-                usersRepository.setAverage(res.getAsDouble(),user.getUserId());
-            }
-            else {
+            if (res.isPresent()) {
+                usersRepository.setAverage(res.getAsDouble(), user.getUserId());
+            } else {
                 throw new IllegalStateException("Something went wrong!");
             }
         }
     }
 
     @Transactional
-    public void doTeamSeparation (Integer groupId) {
+    public void doTeamSeparation(Integer groupId) {
         List<Users> sortedUsersList = usersRepository.sortedUsersFromGroup(groupId);
         Teams teamsA = new Teams();
         Teams teamsB = new Teams();
@@ -97,15 +99,34 @@ public class UsersService {
         for (int i = 0; i < sortedUsersList.size(); i++) {
             Users user = sortedUsersList.get(i);
             for (int j = 1; j <= 2; j++) {
-            if (i == 0 || i%2==0){
-                teamsA.setTeamId(1);
-                user.setTeamsForeign(teamsA);
-            }
-            else {
-                teamsB.setTeamId(2);
-                user.setTeamsForeign(teamsB);
-            }
+                if (i == 0 || i % 2 == 0) {
+                    teamsA.setTeamId(1);
+                    user.setTeamsForeign(teamsA);
+                } else {
+                    teamsB.setTeamId(2);
+                    user.setTeamsForeign(teamsB);
+                }
             }
         }
+    }
+    @Transactional
+    public UsersDTO getUserById(Integer id){
+        Optional<Users> entity = usersRepository.findById(id);
+        UsersDTO dto;
+        dto =  converter.convertUsersEntitytoDTO(entity.get());
+        return dto;
+    }
+
+    @Transactional
+    public List<UsersDTO> getAllUsersFromGroupId(Integer id){
+        List<Users> entity = usersRepository.getAllByGroupOfUsersForeign_GroupId(id);
+        List<UsersDTO> dtos = new ArrayList<>();
+
+        for (int i = 0; i < entity.size(); i++) {
+            Users users = entity.get(i);
+            UsersDTO usersDTO = converter.convertUsersEntitytoDTO(users);
+            dtos.add(usersDTO);
+        }
+        return dtos;
     }
 }

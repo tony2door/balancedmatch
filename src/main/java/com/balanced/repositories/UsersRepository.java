@@ -27,6 +27,7 @@ public interface UsersRepository extends JpaRepository<Users,Integer> {
     @Query(value = "SELECT * from users_db join groups_db gd on users_db.group_id = gd.group_id where users_db.group_id = ?1 order by player_average desc", nativeQuery = true)
     List<Users> sortedUsersFromGroup (Integer groupId);
 
+    List<Users> getAllByGroupOfUsersForeign_GroupId(Integer groupId);
 
 
 }

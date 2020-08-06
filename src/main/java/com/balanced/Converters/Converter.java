@@ -24,6 +24,7 @@ public class Converter {
         dto.setGroupName(entity.getGroupOfUsersForeign().getGroupName());
         dto.setTeamName(entity.getTeamsForeign().getTeamName());
         dto.setPlayerAverage(entity.getPlayerAverage());
+        dto.setTeamId(entity.getTeamsForeign().getTeamId());
         return dto;
     }
 }

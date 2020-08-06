@@ -24,5 +24,6 @@ public class UsersDTO {
     private Double playerAverage;
     private String groupName;
     private String teamName;
+    private Integer teamId;
 
 }
