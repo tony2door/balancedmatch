@@ -8,10 +8,10 @@ INSERT INTO users_db values (default,'Mihai','root',45,66,77,34,77,12,88,88,54,'
 INSERT INTO users_db values (default,'Adi','root',45,66,77,34,77,88,97,88,54,'MIJLOCAS',null,1,1);
 INSERT INTO users_db values (default,'Ade','root',45,66,77,34,77,88,32,88,54,'MIJLOCAS',null,1,1);
 INSERT INTO users_db values (default,'George','root',45,66,77,34,77,44,88,88,54,'MIJLOCAS',null,1,1);
-INSERT INTO users_db values (default,'Ronaldo','root',45,66,77,34,77,55,88,88,54,'FUNDAS',null,1,2);
-INSERT INTO users_db values (default,'Aguero','root',45,66,77,34,77,88,24,88,54,'FUNDAS',null,1,2);
-INSERT INTO users_db values (default,'Aubameyang','root',45,66,77,34,77,88,12,88,54,'FUNDAS',null,1,2);
-INSERT INTO users_db values (default,'Florinel','root',45,66,77,34,77,88,88,6,54,'FUNDAS',null,1,2);
-INSERT INTO users_db values (default,'Lacazette','root',45,66,54,34,77,88,88,88,54,'FUNDAS',null,1,2);
-INSERT INTO users_db values (default,'Messi','root',45,66,77,43,77,88,88,88,54,'ATACANT',null,1,2);
-INSERT INTO users_db values (default,'Hagi','root',45,66,77,86,77,88,88,88,54,'ATACANT',null,1,2);
+INSERT INTO users_db values (default,'Ronaldo','root',45,66,77,34,77,55,88,88,54,'FUNDAS',null,1,1);
+INSERT INTO users_db values (default,'Aguero','root',45,66,77,34,77,88,24,88,54,'FUNDAS',null,1,1);
+INSERT INTO users_db values (default,'Aubameyang','root',45,66,77,34,77,88,12,88,54,'FUNDAS',null,1,1);
+INSERT INTO users_db values (default,'Florinel','root',45,66,77,34,77,88,88,6,54,'FUNDAS',null,1,1);
+INSERT INTO users_db values (default,'Lacazette','root',45,66,54,34,77,88,88,88,54,'FUNDAS',null,1,1);
+INSERT INTO users_db values (default,'Messi','root',45,66,77,43,77,88,88,88,54,'ATACANT',null,1,1);
+INSERT INTO users_db values (default,'Hagi','root',45,66,77,86,77,88,88,88,54,'ATACANT',null,1,1);

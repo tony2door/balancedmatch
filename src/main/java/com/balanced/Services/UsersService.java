@@ -1,5 +1,4 @@
 package com.balanced.Services;
-
 import com.balanced.Converters.Converter;
 import com.balanced.DTOs.UsersDTO;
 import com.balanced.Entities.GroupOfUsers;
@@ -8,10 +7,7 @@ import com.balanced.Entities.Users;
 import com.balanced.repositories.GroupsRepository;
 import com.balanced.repositories.TeamsRepository;
 import com.balanced.repositories.UsersRepository;
-import org.apache.catalina.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.*;
 import java.util.stream.IntStream;
@@ -19,17 +15,24 @@ import java.util.stream.IntStream;
 @Service
 public class UsersService {
 
-    @Autowired
+    final
     UsersRepository usersRepository;
 
-    @Autowired
+    final
     GroupsRepository groupsRepository;
 
-    @Autowired
+    final
     TeamsRepository teamsRepository;
 
-    @Autowired
+    final
     Converter converter;
+
+    public UsersService(UsersRepository usersRepository, GroupsRepository groupsRepository, TeamsRepository teamsRepository, Converter converter) {
+        this.usersRepository = usersRepository;
+        this.groupsRepository = groupsRepository;
+        this.teamsRepository = teamsRepository;
+        this.converter = converter;
+    }
 
     @Transactional
     public List<UsersDTO> getAllUsers() {
