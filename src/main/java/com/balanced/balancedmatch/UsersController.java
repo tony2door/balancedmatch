@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @CrossOrigin
@@ -32,7 +33,7 @@ public class UsersController {
         return new ResponseEntity<>(usersList, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/users")
+    @GetMapping(value = "/mygr", produces = "application/json")
     public ResponseEntity<List<UsersDTO>> balanceTeamsFromGroup(@RequestParam(value = "groupId") Integer groupId) {
         usersService.calculateAverage();
         usersService.doTeamSeparation(groupId);

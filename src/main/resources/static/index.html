@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tony's app</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        li {
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        li:hover {
+            color: red;
+        }
+
+        a {
+            font-size: 50px;
+        }
+
+        .playerDetailsSection {
+            float: right;
+        }
+
+        .playerNameSection {
+            float: left;
+        }
+
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+        #customers tr:hover {background-color: #ddd;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: darkred;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+<div id="app">
+
+
+    <div class="playerNameSection">
+    <ul>
+        <li v-for="player in players" @click="showPlayer(player)">{{ player.userName }}</li>
+    </ul>
+    </div>
+
+
+    <div class="playerDetailsSection">
+        <h2>Click on a player name to see their details</h2>
+        <div class="details" v-show="showDetails">
+            <table id="customers">
+                <tr>
+                    <th>Player Name</th>
+                    <th>Player Role</th>
+                    <th>Group</th>
+                    <th>Player Defence</th>
+                    <th>Player Middle</th>
+                    <th>Player Attack</th>
+                </tr>
+                <tr>
+                    <td>{{selectedPlayer.userName}}</td>
+                    <td>{{selectedPlayer.playerRole}}</td>
+                    <td>{{selectedPlayer.groupName}}</td>
+                    <td>{{selectedPlayer.playerDefence}}</td>
+                    <td>{{selectedPlayer.playerMiddle}}</td>
+                    <td>{{selectedPlayer.playerAttack}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+
+<script>
+    const apiURL = "http://localhost:8070/allusers"
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                players: [],
+                showDetails: false,
+                selectedPlayer: ''
+            }
+        },
+        methods: {
+            showPlayer(player) {
+                this.selectedPlayer = player;
+                this.showDetails = true;
+            }
+        },
+        created() {
+            fetch(apiURL)
+                .then(response => {
+                    return response.json();
+                })
+                .then(players => {
+                    this.players = players;
+                })
+        }
+    });
+</script>
+
+</body>
+</html>
